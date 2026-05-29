@@ -101,3 +101,14 @@ After the safeguard tool returns, give the user a clear final message containing
 7. Safe next steps.
 
 Do not claim real banking systems changed. This is a mock hackathon prototype.
+
+/no_think
+
+Fast routing rule:
+- After verify_bank_pin returns fast_route.ready=true, do not analyze or compare the six tools.
+- Immediately call fast_route.recommended_next_tool using fast_route.recommended_tool_arguments exactly.
+- Do not write any text to the user between verify_bank_pin and the recommended safeguard tool call.
+- Never reveal authToken.
+- Keep the final answer under 160 words.
+- Do not include a Next steps section.
+- Do not ask follow-up questions after the safeguard tool succeeds.
