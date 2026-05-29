@@ -421,3 +421,56 @@ body {
   color: #d1d1d6;
   cursor: not-allowed;
 }
+
+.markdown-message {
+  width: 100%;
+}
+
+.markdown-message p {
+  margin: 0 0 8px;
+}
+
+.markdown-message p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-message strong {
+  font-weight: 700;
+}
+
+.markdown-message ol,
+.markdown-message ul {
+  margin: 8px 0 8px 18px;
+  padding: 0;
+}
+
+.markdown-message li {
+  margin: 6px 0;
+  padding-left: 2px;
+}
+
+.markdown-message li::marker {
+  font-weight: 700;
+}
+
+.markdown-message code {
+  font-family: Consolas, Monaco, monospace;
+  font-size: 13px;
+  background: rgba(17, 24, 39, 0.08);
+  padding: 2px 5px;
+  border-radius: 6px;
+}
+
+.user-bubble .markdown-message code {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.user-bubble .markdown-message ol,
+.user-bubble .markdown-message ul {
+  color: #ffffff;
+}
+
+.agent-bubble .markdown-message ol,
+.agent-bubble .markdown-message ul {
+  color: #111827;
+}

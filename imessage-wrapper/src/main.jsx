@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const API_BASE_URL = "http://127.0.0.1:8787";
 const SESSION_KEY = "bank-fraud-imessage-wrapper";
@@ -112,6 +114,19 @@ function App() {
       data?.choices?.[0]?.message?.content ||
       "No response text returned from OpenClaw."
     );
+  }
+
+  function formatMessageForDisplay(text) {
+    if (!text || typeof text !== "string") {
+      return "";
+    }
+
+    return text
+      .replace(/Here's what was done:\s*/i, "Here's what was done:\n\n")
+      .replace(/\s+(?=\d+\.\s+\*\*)/g, "\n")
+      .replace(/\s+(?=Case\/Reference ID:)/gi, "\n\n")
+      .replace(/\s+(?=Safety Reminder:)/gi, "\n\n")
+      .trim();
   }
 
   async function sendMessage(customText = null) {
@@ -306,7 +321,11 @@ function App() {
                       : "agent-bubble"
                   } ${message.isError ? "error-bubble" : ""}`}
                 >
-                  {message.content}
+                      <div className="markdown-message">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {formatMessageForDisplay(message.content)}
+                        </ReactMarkdown>
+                      </div>
                 </div>
 
                 <div className="bubble-time">{message.time}</div>
