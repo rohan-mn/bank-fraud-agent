@@ -1,0 +1,32 @@
+{
+  "id": "bank-card-protection",
+  "name": "Bank Card Protection",
+  "description": "Banking demo tools for customer verification, PIN verification, and card protection safeguards.",
+  "version": "0.1.0",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiBaseUrl": {
+        "type": "string",
+        "description": "Python FastAPI base URL, for example http://127.0.0.1:8000"
+      },
+      "sharedSecret": {
+        "type": "string",
+        "description": "Same value as backend BANK_AGENT_SHARED_SECRET"
+      }
+    }
+  },
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": [
+      "verify_bank_customer",
+      "verify_bank_pin",
+      "handle_credit_card_fraud",
+      "handle_any_card_theft",
+      "handle_compromised_pin",
+      "handle_any_card_lost"
+    ]
+  }
+}

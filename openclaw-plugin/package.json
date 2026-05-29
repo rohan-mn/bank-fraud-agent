@@ -1,0 +1,32 @@
+{
+  "name": "@demo/openclaw-bank-card-protection",
+  "version": "0.1.0",
+  "description": "OpenClaw tool plugin for a banking card protection demo agent.",
+  "type": "module",
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "plugin:build": "npm run build && openclaw plugins build --entry ./dist/index.js",
+    "plugin:validate": "openclaw plugins validate --entry ./dist/index.js",
+    "plugin:inspect": "openclaw plugins inspect bank-card-protection --runtime --json"
+  },
+  "dependencies": {
+    "typebox": "^1.1.38"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.5.17"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  }
+}
